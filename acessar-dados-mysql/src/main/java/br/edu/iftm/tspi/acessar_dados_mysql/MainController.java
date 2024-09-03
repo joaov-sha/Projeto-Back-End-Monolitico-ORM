@@ -1,22 +1,28 @@
 package br.edu.iftm.tspi.acessar_dados_mysql;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 
-
-@Controller
+//S6833 - Remover anotações Controller e substituí-las por anotações @RestController e remover todas as anotações ResponseBody
+@RestController
 @RequestMapping(path="/demo")
 public class MainController {
-    @Autowired
+    //S6813 - Remover injeção de por campos e adicionar injeção por construtor
     private UsuarioRepository usuarioRepository;
+
+    public UsuarioRepository getUsuarioRepository() {
+        return usuarioRepository;
+    }
+
+    public void setUsuarioRepository(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
 
     @PostMapping("/add")
     public @ResponseBody String addNewUser (@RequestParam String nome, @RequestParam String email){
