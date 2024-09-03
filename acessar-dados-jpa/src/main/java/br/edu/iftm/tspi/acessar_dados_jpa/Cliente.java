@@ -2,7 +2,7 @@ package br.edu.iftm.tspi.acessar_dados_jpa;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+//S1128 Remoção de imports não utilizados em projeto
 import jakarta.persistence.Id;
 
 @Entity
